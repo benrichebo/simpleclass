@@ -8,22 +8,44 @@ if (isset($_SESSION['userPassword'])) {
 }
 
 ?>
-<div class="text-center col-md-3 m-auto">
-    <form class="form-signin mt-5">
+<div class="col-md-3 col-sm-6 m-auto">
+    <form class="form-signin">
       <img class="mb-4" src="." alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+      <h3 class="h3-responsive text-center mb-3 font-weight-normal">Please sign in</h3>
+      <div class="form-group">
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       </div>
-      <button id="login" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
-      <div class="mt-3">
+      <div class="form-group">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>  
+      </div>
+      <button onclick="login()" class="btn btn-primary btn-block" type="button">Sign in</button>
+      <div class="mt-3 text-center">
           <p>New user? <a href=".?page=signup"> Sign up</a></p>
       </div>
     </form>
 </div>
+<script>
+  function login(){
+    var email = $('#inputEmail').val();
+    var password = $('#inputPassword').val();
+    var inp = email == '' || password == '';
+    checkInp(inp);
+    if (!inp) {
+        var obj = {login:1,email:email, password:password};
+        var url = 'controls/account.php';
+        postData(obj,url);
+    }
+  }
+
+function onsuccesslogin(){
+    window.location = 'dashboard.php';
+ }
+
+ 
+ function onsuccessadminlogin(){
+   window.location = 'dashboard.php';
+ }
+</script>
+

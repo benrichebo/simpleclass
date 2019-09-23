@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +13,11 @@
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<style type="text/css">:root #content > #right > .dose > .dosesingle,
-  :root #content > #center > .dose > .dosesingle
-  {display:none !important;}
-  .list-inline li{
-    float: left;
-  }
-  </style>
-  <style>
-    .list-inline li{
-    float: left;
-    padding: 20px;
-  }
-  </style>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/app.js"></script>
 </head>
 <body cz-shortcut-listen="true">

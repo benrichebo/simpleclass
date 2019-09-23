@@ -32,7 +32,7 @@ function databaseConnection(){
  }
 
  function get_header(){
-     include_once('header.php');
+     include('header.php');
  }
 
  
@@ -42,7 +42,7 @@ function databaseConnection(){
 
  
  function get_front(){
-    include_once('front.php');
+    include('front.php');
  }
 
  function get_navbar(){

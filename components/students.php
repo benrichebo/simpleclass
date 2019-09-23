@@ -13,4 +13,23 @@
               </tbody>
             </table>
           </div>
-    </section>
+</section>
+<script>
+  
+//fetch students
+var obj = {fetchStudents: 1};
+var url = 'controls/account.php';
+fetchData(obj,url);
+
+function onsuccessstudent(myObj4){
+    var i = '', txt = '';
+    for(i in myObj4){
+        txt += '<tr>';
+        txt += '<td>#</td>';
+        txt += '<td>' + myObj4[i].email + '</td>';
+        txt += '<td>' + myObj4[i].class + '</td>';
+        txt += '</tr>';
+    }
+    $('#studentsTable').html(txt);
+}
+</script>

@@ -1,19 +1,30 @@
 <?php
     class Query{
-        public static $result,$num,$output,$qry;
+        public static $result,$num,$output,$qry,$row;
 
         public static function selectData($connection,$data,$table){
             $action = $connection->prepare("SELECT $data FROM $table");
             $action->execute();
-            static::$result = $action->fetchAll(PDO::FETCH_ASSOC);
-            static::$qry = json_encode(static::$result);
+            static::$result = $action->setFetchMode(PDO::FETCH_ASSOC);
+            static::$row = $action->fetchAll();
+            static::$qry = json_encode(static::$row);
         }
 
         public static function selectDataWhere($connection,$data,$table,$where){
-            $action = $connection->prepare("SELECT $data FROM $table $where LIMIT 1");
+            $action = $connection->prepare("SELECT $data FROM $table $where");
             $action->execute();
-            static::$result = $action->fetchAll(PDO::FETCH_ASSOC);
-            static::$qry = json_encode(static::$result);
+            static::$result = $action->setFetchMode(PDO::FETCH_ASSOC);
+            static::$row = $action->fetch();
+            static::$qry = json_encode(static::$row);
+        }
+
+        
+        public static function selectDataWhereAll($connection,$data,$table,$where){
+            $action = $connection->prepare("SELECT $data FROM $table $where");
+            $action->execute();
+            static::$result = $action->setFetchMode(PDO::FETCH_ASSOC);
+            static::$row = $action->fetchAll();
+            static::$qry = json_encode(static::$row);
         }
         protected static function insertData($connection,$table,$dbvalues,$values){
             $action = "INSERT INTO $table $dbvalues $values";

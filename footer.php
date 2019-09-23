@@ -1,37 +1,20 @@
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-3.4.1.min.js"></script>
+<div class="modal fade" id="pModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content p-3">
+     <span id="response">Processing...</span>
+    </div>
+  </div>
+</div>
+
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
 <script>
  /*  $('.page').click(function(e){
     e.preventDefault();
     var link = $(this).attr('href');
     $('#content').load(link);
   }) */
-
-
-//lecturer form
-$('#lecturerForm').hide();
-$('#createLecturerToggle').click(function(){
-    $('#lecturerForm').toggle();
-})
-
-$('#addLecturer').click(function(){
-  var lecturereName = $('#lecturerName').val();
-  var department = $('#department').val();
-  alert(department);
-})
-
-
-//course form
-$('#courseForm').hide();
-$('#createCourseToggle').click(function(){
-    $('#courseForm').toggle();
-})
-
-
 
 //upload file form
 $('#uploadForm').hide();

@@ -35,6 +35,23 @@
           </div>
     </section>
     <script>
+
+//fetch classes
+var obj = {fetchClass: 1};
+var url = 'controls/class.php';
+fetchData(obj,url);
+
+function onsuccessclass(myObj2){
+    var i = '', txt = '';
+    for(i in myObj2){
+        txt += '<tr>';
+        txt += '<td>#</td>';
+        txt += '<td>' + myObj2[i].class_name + '</td>';
+        txt += '<td>' + myObj2[i].number_of_students + '</td>';
+        txt += '</tr>';
+    }
+    $('#classesTable').html(txt);
+}
         //class form
   $('#classForm').hide();
 $('#createClassToggle').click(function(){
@@ -45,4 +62,16 @@ $('#createClass').click(function(){
   var className = $('#className').val();
   alert(className);
 })
+
+
+$('#createClass').click(function(){
+    var className = $('#className').val();
+    var inp = className == '';
+    checkInp(inp);
+    if (!inp) {
+        var obj = {createClass:1,className:className};
+        var url = 'controls/class.php';
+        postData(obj,url);
+    }
+  })
     </script>

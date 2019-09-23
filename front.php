@@ -1,14 +1,11 @@
  <!-- Start your project here-->
  <div style="height: 100vh">
     <div class="text-center">
-      <h1 class="text-hide fadeIn mb-4"
-        style="background-image: url('https://mdbootstrap.com/img/logo/mdb-transparent-250px.png'); width: 250px; height: 90px;">
-        MDBootstrap</h1>
-      <h1 class="h1-responsive">SimpleClass</h1>
-      <h3 class="animated fadeIn text-muted">Access course materials</h3>
-      <a href=".?page=signup" class="btn btn-primary btn-lg mt-3"> Get started <i class="fa fa-arrow-right"></i></a>
+      <h1 class="h1-responsive p-2">SimpleClass</h1>
+      <h2 class="h2-responsive animated fadeIn text-muted p-2">Access course materials</h2>
+      <a href=".?page=signup" class="btn btn-primary btn-lg m-3"> Get started <i class="fa fa-arrow-right"></i></a>
 
-      <div class="col-md-4 m-auto p-4">
+      <div class="col-md-4 m-auto p-5">
         <div class="jumbotron p-2">
             <h5 class="display-6 text-muted">Are you a lecturer? 
                 <a class="" href=".?page=admin_signup" role="button">Sign Up</a> or
@@ -19,20 +16,20 @@
     </div>
         <div class="col-md-8 m-auto">
             <hr>
-            <div class="row mt-5">
-                <div class="col-md-4">
+            <div class="row mt-5 p-3">
+                <div class="col-md-4 col-sm-6 p-3">
                 <h4>Login</h4>
-                <p>Provide Email Password</p>
+                <p class="text-muted">Provide Email & Password</p>
                 </div>
 
-                <div class="col-md-4">
-                <h4>Find Courses</h4>
-                <p>Courses for the semester</p>
+                <div class="col-md-4 col-sm-6 p-3">
+                <h4>Find Course Materials</h4>
+                <p class="text-muted">Course materials for the semester</p>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6 p-3">
                 <h4>Download</h4>
-                <p>Just click on the download button and voila</p>
+                <p class="text-muted">Just click on the download button and voila</p>
                 </div>
             </div>
         </div>

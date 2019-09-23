@@ -26,15 +26,17 @@ require_once('controls/upload.php');
          
                   <div class="row">
                     <span class="col">
-                        <select name="selectCourses" id="selectCourses" class="form-control">
+                      Select Course
+                        <select name="course" id="selectCourses" class="form-control">
                         </select>
                     </span>
                     <span class="col">
-                        <select name="selectClasses" id="selectClasses"  class="form-control">
+                      Select school
+                        <select name="school" id="selectSchool" class="form-control">
                         </select>
                     </span>
                   </div>
-                <input type="text" value="<?php if (isset($_SESSION['adminPassword']) || isset($_SESSION['userPassword'])) {
+                <input type="text" value="<?php if (isset($_SESSION['adminPassword'])) {
                 echo $msg = $_SESSION['userEmail'];
               } ?>" name="lecturer" hidden>
                 
@@ -44,17 +46,63 @@ require_once('controls/upload.php');
               </div>
               <button type="submit" class="btn btn-primary" name="submit">Upload</button>
             </form>
-        <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>MATERIAL</th>
-                  <th>COURSE</th>
-                </tr>
-              </thead>
-              <tbody id="materialsTable">
-              </tbody>
-            </table>
-          </div>
+            <div class="row" id="materialsTable">
+            </div>
     </section>
+    <script>
+(function(){
+  $('#courseForm').hide(); 
+     url = './controls/data/courses.php';
+      //fetch school
+      var obj = {fetchCourseSchool: 'fetchCourseSchool'};
+      fetch(url,obj);
+  //fetch courses
+      var obj = {fetchCourse: 'fetchCourse'};
+      fetch(url,obj);
+
+      //fetch materials
+      var obj = {fetchMaterials: 'fetchMaterials'};
+      var url = 'controls/data/materials.php';
+      fetch(url,obj);
+
+})()
+      
+
+function fetchC(response){
+    var myObj = JSON.parse(response);
+            var i = '', txt = '';
+                for(i in myObj){
+                  txt += '<option value="' + myObj[i].course_code + '">' + myObj[i].course_code + '</option>';
+                }
+                $('#selectCourses').html(txt);
+}
+
+
+function fetchS(response){
+    var myObj = JSON.parse(response);
+            var i = '', txt = '';
+                for(i in myObj){
+                  txt += '<option value="' + myObj[i].school + '">' + myObj[i].school + '</option>';
+                }
+                $('#selectSchool').html(txt);
+}
+
+
+function onsuccessmaterial(response){
+        var myObj = JSON.parse(response);
+    var i = '', txt = '';
+    for(i in myObj){
+        txt += '<div class="col-md-2 col-sm-3">'
+        txt += '<div class="card">';
+        txt += '<div class="card-body text-center">'
+        txt += '<img src="./images/pdf.png" width="50" alt="">';   
+        txt += '</div>'
+        txt += '<div class="card-footer p-2">'
+        txt += '<small>' + myObj[i].material_name + '</small> <a href="uploads/'+ myObj[i].material_name +'" download class="fa fa-download"></a>';
+        txt += '</div>';
+        txt += '</div>';
+        txt += '</div>';
+    }
+    $('#materialsTable').html(txt);
+}
+    </script>

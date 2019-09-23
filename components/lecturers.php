@@ -20,4 +20,23 @@
               </tbody>
             </table>
           </div>
-    </section>
+</section>
+<script>
+  //fetch lecturers
+var obj = {fetchLecturer: 1};
+var url = 'controls/account.php';
+fetchData(obj,url);
+function onsuccesslecturers(myObj3){
+    var i = '', txt = '';
+    for(i in myObj3){
+        txt += '<tr>';
+        txt += '<td>#</td>';
+        txt += '<td>' + myObj3[i].lecturer_name + '</td>';
+        txt += '<td>' + myObj3[i].department + '</td>';
+        txt += '<td>' + myObj3[i].courses + '</td>';
+        txt += '<td>' + myObj3[i].materials + '</td>';
+        txt += '</tr>';
+    }
+    $('#lecturersTable').html(txt);
+}
+</script>
